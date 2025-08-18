@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ABOUT YOU — The 1975 (Aesthetic)</title>
+
+  <!-- Google Fonts (similar to your Canva vibe: bold sans + light serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700;800&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ececec;          /* page background (light grey like your slide) */
+      --panel-1: #4a4a4a;     /* dark rounded panel */
+      --panel-2: #7a7a7a;     /* mid rounded panel */
+      --panel-3: #bcbcbc;     /* light rounded panel */
+      --ink: #111;            /* main text color */
+      --muted: #5b5b5b;       /* small subtitle color */
+      --accent: #000;         /* buttons / outlines */
+      --shadow: 0 18px 35px rgba(0,0,0,.15);
+      --radius: 28px;
+      --maxw: 1120px;         /* content width */
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 40px auto;
+      padding: 0 18px;
+    }
+
+    /* ======= HERO / COVER ======= */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr; /* left image area + right columns block */
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    /* LEFT: cover card (image + title) */
+    .cover {
+      background: #f5f5f5;
+      border-radius: var(--radius);
+      padding: 28px 28px 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover img {
+      width: 100%;
+      aspect-ratio: 1 / 1; /* square image like your Canva */
+      object-fit: cover;
+      border-radius: 12px;
+      filter: grayscale(100%);
+      display: block;
+    }
+
+    .title {
+      margin-top: 14px;
+      text-align: center;
+    }
+    .title h1 {
+      margin: 0;
+      font-family: Inter, sans-serif;
+      font-weight: 800;
+      letter-spacing: 1px;
+      font-size: clamp(26px, 4.5vw, 44px);
+      text-transform: uppercase;
+      text-shadow: 0 5px 18px rgba(0,0,0,.25);
+    }
+    .title .sub {
+      font-family: "Playfair Display", serif;
+      letter-spacing: .4px;
+      color: var(--muted);
+      margin-top: -2px;
+      font-size: 14px;
+    }
+
+    /* RIGHT: three tall rounded panels like in your design */
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .col {
+      min-height: clamp(360px, 60vh, 680px);
+      border-radius: 34px;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .col--a{ background: var(--panel-1); }
+    .col--b{ background: var(--panel-2); }
+    .col--c{ background: var(--panel-3); }
+
+    .col .inner {
+      position: absolute;
+      inset: 22px;
+      color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .col h3 {
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      font-size: clamp(16px, 2vw, 20px);
+      margin: 0 0 8px;
+      color: #fff;
+    }
+    .col p { color: #e7e7e7; opacity: .9; margin: 0; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid #fff;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      backdrop-filter: blur(2px);
+      transition: transform .15s ease, opacity .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); opacity: .9; }
+
+    /* ======= SECTIONS (like your other slides) ======= */
+    section {
+      max-width: var(--maxw);
+      margin: 80px auto;
+      padding: 0 18px;
+    }
+    .section-card {
+      background: #f7f7f7;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(18px, 4vw, 36px);
+    }
+    .section-card h2 {
+      margin-top: 0;
+      font-family: Inter, sans-serif;
+      font-weight: 800;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    /* navbar (simple) */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(236,236,236,.7);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #ddd;
+    }
+    .nav .inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 10px 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+    .nav a:hover { background: #e5e5e5; }
+
+    /* audio dock */
+    .audio-dock {
+      position: fixed;
+      right: 18px; bottom: 18px;
+      background: #151515;
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .audio-dock button { cursor: pointer; }
+    .audio-dock small { opacity: .8; }
+
+    /* responsive */
+    @media (max-width: 980px){
+      .hero { grid-template-columns: 1fr; }
+      .columns { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px){
+      .columns { grid-template-columns: 1fr; }
+      .col { min-height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Simple sticky nav linking to sections (like your page buttons) -->
+  <div class="nav">
+    <div class="inner">
+      <div><strong>ABOUT YOU</strong> — tribute page</div>
+      <div>
+        <a href="#listen">Listen</a>
+        <a href="#lyrics">Lyrics</a>
+        <a href="#credits">Credits</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- HERO matching your Canva slide: left cover + three rounded panels on right -->
+    <div class="hero">
+      <div class="cover">
+        <img src="img/about you.jpg" alt="monochrome cover" />
+        <div class="title">
+          <h1>ABOUT YOU</h1>
+          <div class="sub">The 1975</div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="col col--a">
+          <div class="inner">
+            <div>
+              <h3>Dreamy Night</h3>
+              <p>City lights, soft grain, and slow fades — keep the vibe minimal like your Canva layout.</p>
+            </div>
+            <div>
+              <a class="btn" href="#listen">▶ Listen section</a>
+            </div>
+          </div>
+        </div>
+        <div class="col col--b">
+          <div class="inner">
+            <div>
+              <h3>Story / Notes</h3>
+              <p>Add a short caption or a diary line here. Keep it subtle, respectful.</p>
+            </div>
+            <div>
+              <a class="btn" href="#lyrics">Lyrics</a>
+            </div>
+          </div>
+        </div>
+        <div class="col col--c">
+          <div class="inner" style="color:#222">
+            <div>
+              <h3 style="color:#222">Design</h3>
+              <p>Rounded columns mirror your slide. You can change shades in <code>:root</code> variables.</p>
+            </div>
+            <div>
+              <a class="btn" href="#credits" style="border-color:#222;color:#222">Credits</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTIONS -->
+  <section id="listen">
+    <div class="section-card">
+      <h2>Listen</h2>
+      <p>
+        Because browsers block auto‑play with sound, click play below to listen while you browse.
+      </p>
+      <!-- Example: embedded Bandcamp / SoundCloud / Spotify player -->
+      <div style="margin-top:12px; aspect-ratio:16/9; max-width:780px; background:#ddd; border-radius:12px; overflow:hidden">
+        <!-- Replace the iframe src with your actual embed link -->
+        <iframe 
+          style="width:100%; height:100%; border:0"
+          src="https://open.spotify.com/track/1fDFHXcykq4iw8Gg7s5hG9?si=faabb532fdcb496a" 
+          title="Placeholder player"
+          allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <p style="margin-top:14px">
+        Or upload your own MP3 and control it with the floating player (bottom-right).
+      </p>
+    </div>
+  </section>
+
+  <section id="lyrics">
+    <div class="section-card">
+      <h2>Lyrics (excerpt)</h2>
+      <p style="font-family:'Playfair Display',serif; font-size:18px">
+        <em>Place your favourite lines here (for private use). Avoid posting full lyrics publicly to respect copyright.</em>
+      </p>
+    </div>
+  </section>
+
+  <section id="credits">
+    <div class="section-card">
+      <h2>Credits</h2>
+      <ul>
+        <li>Design inspired by your Canva slide (cover left + 3 rounded panels right).</li>
+        <li>Replace the cover image URL with your own artwork.</li>
+        <li>Use the buttons in the right panels to navigate sections.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Floating audio player (for your own MP3) ===== -->
+  <div class="audio-dock" role="group" aria-label="Audio controls">
+    <button id="btnPlay">Play</button>
+    <button id="btnPause">Pause</button>
+    <input id="seek" type="range" min="0" max="100" value="0" step="1" aria-label="Seek" />
+    <small id="time">00:00</small>
+    <label style="cursor:pointer; background:#2b2b2b; padding:6px 10px; border-radius:8px">
+      Load MP3
+      <input id="file" type="file" accept="audio/*" style="display:none" />
+    </label>
+  </div>
+
+  <audio id="player" preload="metadata"></audio>
+
+  <script>
+    // ===== Simple smooth scroll for in‑page links =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+
+    // ===== Minimal custom audio controls (so it keeps playing while you scroll) =====
+    const player = document.getElementById('player');
+    const btnPlay = document.getElementById('btnPlay');
+    const btnPause = document.getElementById('btnPause');
+    const seek = document.getElementById('seek');
+    const time = document.getElementById('time');
+    const file = document.getElementById('file');
+
+    function fmt (s){
+      s = Math.floor(s || 0); const m = String(Math.floor(s/60)).padStart(2,'0'); const ss = String(s%60).padStart(2,'0'); return `${m}:${ss}`;
+    }
+
+    btnPlay.addEventListener('click', () => player.play());
+    btnPause.addEventListener('click', () => player.pause());
+
+    file.addEventListener('change', () => {
+      const f = file.files?.[0];
+      if(!f) return;
+      const url = URL.createObjectURL(f);
+      player.src = url; // user gesture needed to play
+      player.play().catch(() => {/* ignored — user can press Play */});
+    });
+
+    player.addEventListener('loadedmetadata', () => { seek.max = Math.floor(player.duration); });
+    player.addEventListener('timeupdate', () => { seek.value = Math.floor(player.currentTime); time.textContent = fmt(player.currentTime); });
+    seek.addEventListener('input', () => { player.currentTime = seek.value; });
+  </script>
+</body>
+</html>
